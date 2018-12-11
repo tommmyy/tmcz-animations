@@ -1,0 +1,28 @@
+.Collapse {
+	transition: max-height 0.3s ease-out;
+	overflow:hidden;
+	max-height: 0;
+}
+
+.Collapse-enter {
+	max-height: 0;
+
+}
+.Collapse-enter-active {
+	max-height: 300px;
+	transition: max-height 0.3s ease-in;
+}
+
+.Collapse-enter-done {
+	max-height: 300px;
+}
+
+.Collapse-exit {
+	max-height: 300px;
+	transition: max-height 0.3s ease-out;
+}
+
+.Collapse-exit-active {
+	max-height: 0;
+}
+
