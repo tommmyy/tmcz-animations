@@ -7,9 +7,7 @@ import './Collapsible.css';
 const Collapsible = ({ children, onToggleVisibility, open, ...rest }) => (
 	<Box bg="lightgray" {...rest}>
 		<Button onClick={() => onToggleVisibility(open)}>Toggle</Button>
-		<CSSTransition in={open} classNames="Collapsible" unmountOnExi unmountOnExit timeout={300}>
-			{children}
-		</CSSTransition>
+		{open && children}
 	</Box>
 );
 
