@@ -1,0 +1,24 @@
+.Collapsible {
+	transform: scaleY(1);
+}
+
+.Collapsible-enter {
+	transform: scaleY(0.1);
+	opacity: 0.1;
+}
+
+.Collapsible-enter-active {
+	opacity: 1;
+	transform: scaleY(1);
+	transition: all 300ms ease-out;
+}
+
+.Collapsible-exit {
+	transform: scaleY(1);
+	opacity: 1;
+}
+
+.Collapsible-exit-active {
+	transform: scaleY(0.1);
+	opacity: 0.1;
+}

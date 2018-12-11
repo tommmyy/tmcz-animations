@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Heading, Text } from 'rebass';
+import { Box, Heading, Button, Text } from 'rebass';
+import CSSTransition from 'react-transition-group/CSSTransition';
+import './Collapsible.css';
 
-const Content = ({ ...rest }) => (
-	<Box>
-		<Heading>Hello</Heading>
-		<Text>World</Text>
+const Collapsible = ({ children, onToggleVisibility, open, ...rest }) => (
+	<Box bg="lightgray" {...rest}>
+		<Button onClick={() => onToggleVisibility(open)}>Toggle</Button>
+		<CSSTransition in={open} classNames="Collapsible" unmountOnExi unmountOnExit timeout={300}>
+			{children}
+		</CSSTransition>
 	</Box>
 );
 
-Content.defaultProps = {};
+class Content extends Component {
+	static propTypes = {
+		children: PropTypes.node,
+		className: PropTypes.string,
+	};
+	state = { open: false };
 
-Content.propTypes = {};
+	onToggleVisibility = (isVisible) => this.setState({ open: !isVisible });
+
+	render() {
+		const { ...rest } = this.props;
+		const { open } = this.state;
+
+		return (
+			<Box {...rest}>
+				<Heading>Collapsible demo</Heading>
+
+				<Collapsible my={8} open={open} onToggleVisibility={this.onToggleVisibility}>
+					<Box>
+						<Heading color="magenta">Heading</Heading>
+						<Text>Content</Text>
+					</Box>
+				</Collapsible>
+			</Box>
+		);
+	}
+}
 
 export default Content;
