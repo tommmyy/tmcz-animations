@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import { Box, Heading, Button } from 'rebass';
-import styled from 'styled-components';
+import cx from 'classnames';
+import './Animation.css';
 
-const Animation = styled.div`
-	opacity: ${(ps) => (ps.checked ? 1 : 0)};
-	transition: opacity 0.3s ease-in;
-
-	background-color: lime;
-	width: 50px;
-	height: 50px;
-`;
+const Animation = ({ checked }) => <div className={cx('Animation', { 'Animation--checked': checked })} />;
 
 class Content extends Component {
 	state = { checked: false };

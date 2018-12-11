@@ -1,0 +1,11 @@
+.Animation {
+	opacity: 0;
+	background-color: lime;
+	width:  48px;
+	height: 48px;
+	transition: opacity .3s ease-in;
+}
+
+.Animation--checked {
+	opacity: 1;
+}
