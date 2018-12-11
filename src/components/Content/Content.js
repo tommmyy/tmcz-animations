@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Heading, Button, Text } from 'rebass';
+import { Box, Card, Heading, Button, Text } from 'rebass';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import './Collapsible.css';
 
 const Collapsible = ({ children, onToggleVisibility, open, ...rest }) => (
-	<Box bg="lightgray" {...rest}>
-		<Button onClick={() => onToggleVisibility(open)}>Toggle</Button>
-		<CSSTransition in={open} classNames="Collapsible" unmountOnExi unmountOnExit timeout={300}>
+	<Card boxShadow="0 0 6px rgba(0, 0, 0, .25)" p={16} {...rest}>
+		<Box>
+			<Button onClick={() => onToggleVisibility(open)}>Toggle</Button>
+		</Box>
+		<CSSTransition in={open} classNames="Collapsible" unmountOnExit timeout={300}>
 			{children}
 		</CSSTransition>
-	</Box>
+	</Card>
 );
 
 class Content extends Component {
@@ -27,7 +29,7 @@ class Content extends Component {
 		const { open } = this.state;
 
 		return (
-			<Box {...rest}>
+			<Box width={1 / 2} {...rest}>
 				<Heading>Collapsible demo</Heading>
 
 				<Collapsible my={8} open={open} onToggleVisibility={this.onToggleVisibility}>
